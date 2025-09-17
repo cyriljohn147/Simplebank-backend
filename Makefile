@@ -10,8 +10,14 @@ stopdb:
 createdb:
 	docker exec -it some-postgres createdb --username=root --owner=root simple_bank
 
+createdb-ci:
+	docker exec some-postgres createdb --username=root --owner=root simple_bank
+
 dropdb:
 	docker exec -it some-postgres dropdb simple_bank
+
+dropdb-ci:
+	docker exec some-postgres dropdb simple_bank
 
 migrateup:
 	migrate -path db/migration/ -database "postgresql://root:secret@localhost:5432/simple_bank?sslmode=disable" -verbose up
@@ -25,4 +31,4 @@ sqlc:
 test:
 	go test -v -cover ./...
 
-.PHONY: postgres createdb dropdb migrateup migratedown sqlc startdb stopdb test
+.PHONY: postgres createdb dropdb migrateup migratedown sqlc startdb stopdb test createdb-ci dropdb-ci

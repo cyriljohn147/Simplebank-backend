@@ -27,7 +27,7 @@ jobs:
 
       - name: Create database
         run: |
-          make createdb || echo "Database may already exist"
+          make createdb-ci || echo "Database may already exist"
 
       - name: Install golang migrate
         run: |
