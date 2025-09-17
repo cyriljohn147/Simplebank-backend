@@ -1,6 +1,6 @@
 module github.com/cyriljohn147/simplebank
 
-go 1.25.1
+go 1.23
 
 require (
 	github.com/lib/pq v1.10.9
